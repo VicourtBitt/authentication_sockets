@@ -1,0 +1,27 @@
+:root {
+    --LIGHT: #FFFFFF;
+    --BLUE-LIGHT: #B7B8E1;
+    --VIOLET-PASTEL: #392B58;
+    --PURPLE-DARK: #2D0320;
+    --ORANGE-PASTEL: #FF600A;
+    --TEST: 1px solid red;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0px;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+ul {
+    list-style: none;
+    & li {
+        list-style-type: none;
+    }
+}
