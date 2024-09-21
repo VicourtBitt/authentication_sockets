@@ -16,7 +16,12 @@
 
 body {
     font-family: Verdana, sans-serif;
+    width: 100vw;
+    height: 100vh;
     -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 ul {
@@ -24,4 +29,8 @@ ul {
     & li {
         list-style-type: none;
     }
+}
+
+a {
+    text-decoration: none;
 }
