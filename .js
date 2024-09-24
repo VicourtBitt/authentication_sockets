@@ -11,4 +11,3 @@ const currentTime = new Date(Date.now());
 if (currentTime > futureExpiration) {
   // Code to create a new token
 }
-// return the token

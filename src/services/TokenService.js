@@ -2,7 +2,7 @@ require('dotenv').config()
 const jwt = require('jsonwebtoken')
 const prisma = require('../config/database.js')
 
-class TokensService {
+class TokenService {
     constructor () {
         this.prisma = prisma
     }
@@ -58,5 +58,9 @@ class TokensService {
                 refreshToken: await this.createRefreshToken({ name, userId })
             }
         })
+
+        return update
     }
 }
+
+module.exports = TokenService
