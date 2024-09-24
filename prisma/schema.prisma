@@ -36,15 +36,16 @@ model Credentials {
 
   // This special field is the "foreign key" that will be used to 
   // create a relation, it'll be unique
-  ownUser  User   @relation(fields: [userId], references: [id])
+  ownUser  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId   Int    @unique
 }
 
 model UserToken {
   id           Int    @id @default(autoincrement())
   refreshToken String @unique
+  expiresAt DateTime
 
   // The same will be applied here
-  ownUser      User   @relation(fields: [userId], references: [id])
+  ownUser      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId       Int    @unique
 }
