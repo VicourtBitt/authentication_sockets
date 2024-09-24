@@ -6,14 +6,11 @@ class FakeService {
         this.prisma = prisma
     }
 
-    async createUser(data) {
-        const { name, cpf_cnpj, email, password } = data
-        return this.prisma.User.create({
-            data: {
-                name,
-                cpf_cnpj
-            },  
-        })
+    async sendBS (data) {
+        return {
+            msg : 'Hello world'
+        }
     }
 }
 
+module.exports = FakeService

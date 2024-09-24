@@ -1,41 +1,38 @@
 const { prisma } = require('../config/database.js')
 
-// As said before, we're dealing with functions instead of classes
-const createCredential = async (data) => {
-    const { email, password, userId } = data
-    return prisma.Credential.create({
-        data: {
-            email,
-            password,
-            userId
-        }
-    })
+// Trying to use Classes without the need to instantiate the prisma object
+class CredentialService {
+    async createCredential (data) {
+        const { email, password, userId } = data
+        return prisma.credentials.create({
+            data: {
+                email,
+                password,
+                userId
+            }
+        })
+    }
+
+    async credentialAlreadyExists (email) {
+        const credential = await prisma.credentials.findUnique({
+            where: { email }
+        })
+        return credential
+    }
+
+    async updatePassword (data) {
+        const { email, password } = data
+        return prisma.credentials.update({
+            where: { email },
+            data: { password }
+        })
+    }
+
+    async deleteCredential (email) {
+        return prisma.credentials.delete({
+            where: { email }
+        })
+    }
 }
 
-const credentialAlreadyExists = async (email) => {
-    const credential = await prisma.Credential.findUnique({
-        where: { email }
-    })
-    return credential
-}
-
-const updatePassword = async (data) => {
-    const { email, password } = data
-    return prisma.Credential.update({
-        where: { email },
-        data: { password }
-    })
-}
-
-const deleteCredential = async (email) => {
-    return prisma.Credential.delete({
-        where: { email }
-    })
-}
-
-module.exports = {
-    createCredential,
-    updatePassword,
-    deleteCredential,
-    credentialAlreadyExists
-}
+module.exports = CredentialService

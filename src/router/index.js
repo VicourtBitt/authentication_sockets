@@ -9,12 +9,14 @@ const corsOptions = {
 
 const user = require('./UserRoutes.js');
 const credential = require('./CredentialRoutes.js');
+const fake = require('./fakeRoutes.js');
 
 module.exports = appDB => {
     appDB.use(
         express.json(),
         cors(corsOptions),
         user,
-        credential
+        credential, 
+        fake
     )
 }
