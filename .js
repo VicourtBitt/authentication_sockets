@@ -27,3 +27,15 @@ const evaluatePassword = async (password, hash) => {
   // The result can only be true or false
   return result
 }
+
+// How to set cookie configuration
+// Ask for a require dotenv
+const config = {
+  httpOnly: true,
+  secure: true,
+  sameSite: 'none',
+  maxAge: process.env.ACCESS_COOKIE_LIFETIME
+}
+
+// This will set the token
+res.cookie("access-token", token, config)

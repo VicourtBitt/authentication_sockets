@@ -9,6 +9,7 @@ const corsOptions = {
 
 const user = require('./UserRoutes.js');
 const credential = require('./CredentialRoutes.js');
+const tokens = require('./TokenRoutes.js');
 
 module.exports = appDB => {
     appDB.use(
@@ -16,5 +17,6 @@ module.exports = appDB => {
         cors(corsOptions),
         user,
         credential,
+        tokens
     )
 }
