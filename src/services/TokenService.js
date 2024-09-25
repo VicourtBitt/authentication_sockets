@@ -3,17 +3,13 @@ const jwt = require('jsonwebtoken')
 const prisma = require('../config/database.js')
 
 class TokenService {
-    constructor () {
-        this.prisma = prisma
-    }
-
     // This function will create both access and refresh tokens, it'll
     // be used when the user logs in the application
     async createTokens (data) {
         const { name, userId } = data
         const refreshToken = await this.createRefreshToken({name, userId})
 
-        const refresh = await this.prisma.UserToken.create({
+        const refresh = await prisma.UserToken.create({
             data: {
                 refreshToken: refreshToken,
                 userId: userId
@@ -50,7 +46,7 @@ class TokenService {
     async updateRefreshTokenInDB (data) {
         const { name, userId, token } = data
 
-        const update = await this.prisma.UserToken.update({
+        const update = await prisma.UserToken.update({
             where: {
                 refreshToken: token
             },
