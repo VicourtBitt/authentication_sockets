@@ -1,6 +1,9 @@
 const UserService = require('../services/UserService.js')
 const userService = new UserService()
 
+const CredentialService = require('../services/CredentialService.js')
+const credentialService = new CredentialService()
+
 class UserController {
     // Create only the user
     async createUser(req, res) {
@@ -13,7 +16,7 @@ class UserController {
         }
     }
 
-    // Function that will create the full register
+    // Create the full user register, which is user and credentials
     async createFullRegister (req, res) {
         try {
             const data = req.body
