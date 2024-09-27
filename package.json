@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "WebSockets and JsonWebToken Project For Tests",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "concurrently \"node database.js\" \"node app.js\"",
+    "start": "concurrently \"node prismaServer.js\" \"node app.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,7 +1,7 @@
-const express = require('express');
-const routes = require('./router/index.js');
+import express from 'express';
+import routes from './router/index.js';
 
 const appDB = express();
 routes(appDB);
 
-module.exports = appDB;
+export default appDB;

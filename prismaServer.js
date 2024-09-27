@@ -1,6 +1,8 @@
-require('dotenv').config();
-const { prismaConnection } = require('././src/config/database.js');
-const appDB = require('./src/appDB.js');
+import dotenv from 'dotenv';
+dotenv.config();
+
+import { prismaConnection } from './src/config/database.js';
+import appDB from './src/appDB.js';
 
 // The port that the server will run on
 const PORT = process.env.EXP_PORT || 3000;

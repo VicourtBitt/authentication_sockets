@@ -1,4 +1,4 @@
-const CredentialService = require('../services/CredentialService.js')
+import CredentialService from "../services/CredentialService.js"
 const credentialService = new CredentialService()
 
 class CredentialController {
@@ -43,4 +43,4 @@ class CredentialController {
     }
 }
 
-module.exports = CredentialController
+export default CredentialController

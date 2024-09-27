@@ -1,6 +1,8 @@
-require('dotenv').config()
-const jwt = require('jsonwebtoken')
-const prisma = require('../config/database.js')
+import dotenv from 'dotenv'
+dotenv.config()
+
+import jwt from 'jsonwebtoken'
+import { prisma } from '../config/database.js'
 
 class TokenService {
     // This function will create both access and refresh tokens, it'll
@@ -59,4 +61,4 @@ class TokenService {
     }
 }
 
-module.exports = TokenService
+export default TokenService

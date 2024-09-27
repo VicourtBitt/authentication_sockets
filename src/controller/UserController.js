@@ -1,7 +1,7 @@
-const UserService = require('../services/UserService.js')
-const userService = new UserService()
+import UserService from '../services/UserService.js'
+import CredentialService from '../services/CredentialService.js'
 
-const CredentialService = require('../services/CredentialService.js')
+const userService = new UserService()
 const credentialService = new CredentialService()
 
 class UserController {
@@ -54,6 +54,7 @@ class UserController {
     async findAllUsers(req, res) {
         try {
             const users = await userService.findAllUsers()
+            res.cookie('TEST', "TESTCOOKIE")
             res.status(200).json({ users })
         } catch (error) {
             res.status(400).json({ error: "Algum erro ocorreu no momento de pegar todos os users" })
@@ -71,4 +72,4 @@ class UserController {
     }
 }
 
-module.exports = UserController
+export default UserController

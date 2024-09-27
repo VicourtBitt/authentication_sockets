@@ -1,4 +1,4 @@
-const { prisma } = require('../config/database.js')
+import { prisma } from '../config/database.js'
 
 // Trying to use Classes without the need to instantiate the prisma object
 class CredentialService {
@@ -41,4 +41,4 @@ class CredentialService {
     }
 }
 
-module.exports = CredentialService
+export default CredentialService

@@ -1,9 +1,10 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+import TokenController from '../controller/TokenController.js';
+import authenticateJWT from '../utils/authenticateJWT.js';
+import { Router } from 'express';
 
-const TokenController = require('../controller/TokenController.js');
+dotenv.config();
 const tokenController = new TokenController();
-const authenticateJWT = require('../utils/authenticateJWT');
-const { Router } = require('express');
 const routes = Router();
 
 routes.post(`${process.env.POST_NEW_LOGIN}`, tokenController.createTokens);
@@ -18,4 +19,4 @@ routes.get('/test', (req, res) => {
     return res.status(200).json({ message: res.headers});
 });
 
-module.exports = routes;
+export default routes;

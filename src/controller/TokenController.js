@@ -1,4 +1,4 @@
-const TokenService = require('../services/TokenService')
+import TokenService from '../services/TokenService.js'
 const tokenService = new TokenService()
 
 // This is the configuration for the access token cookie
@@ -49,4 +49,4 @@ class TokenController {
     }
 }
 
-module.exports = TokenController;
+export default TokenController;

@@ -1,8 +1,9 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-const { Router } = require('express');
-const authenticateJWT = require('../utils/authenticateJWT');
-const CredentialController = require('../controller/CredentialController');
+import { Router } from 'express';
+import authenticateJWT from '../utils/authenticateJWT.js';
+import CredentialController from '../controller/CredentialController.js';
 const credentialController = new CredentialController();
 
 const routes = Router();
@@ -16,4 +17,4 @@ routes.get(`${process.env.GET_EXISTING_CREDENTIALS}`, credentialController.crede
 routes.patch(`${process.env.PATCH_CREDENTIALS}`, authenticateJWT, credentialController.updatePassword);
 routes.delete(`${process.env.DELETE_CREDENTIALS}`, authenticateJWT, credentialController.deleteCredential);
 
-module.exports = routes;
+export default routes;

@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
 
 // Creating the cors configuration, to give the
 // permissions from others origins
-const cors = require('cors');
+import cors from 'cors';
 const corsOptions = {
     origin: '*',
     optionsSuccessStatus: 200,
@@ -10,13 +10,13 @@ const corsOptions = {
 }
 
 // Import the routes from each specific model
-const user = require('./UserRoutes.js');
-const credential = require('./CredentialRoutes.js');
-const tokens = require('./TokenRoutes.js');
+import user from './UserRoutes.js';
+import credential from './CredentialRoutes.js';
+import tokens from './TokenRoutes.js';
 
 // Exporting the server configuration and it's
 // middlewares
-module.exports = appDB => {
+export default (appDB) => { 
     appDB.use(
         express.json(),
         cors(corsOptions),

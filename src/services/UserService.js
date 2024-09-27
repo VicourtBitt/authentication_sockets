@@ -1,4 +1,4 @@
-const { prisma } = require('../config/database.js')
+import { prisma } from '../config/database.js'
 
 class UserService {
     // This route will create the user in the database, but only
@@ -32,4 +32,4 @@ class UserService {
     }
 }
 
-module.exports = UserService
+export default UserService
