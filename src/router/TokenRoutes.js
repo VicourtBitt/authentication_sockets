@@ -1,6 +1,8 @@
-const authenticateJWT = require('../utils/authenticateJWT');
+require('dotenv').config();
+
 const TokenController = require('../controller/TokenController.js');
 const tokenController = new TokenController();
+const authenticateJWT = require('../utils/authenticateJWT');
 const { Router } = require('express');
 const routes = Router();
 

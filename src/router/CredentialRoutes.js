@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { Router } = require('express');
 const authenticateJWT = require('../utils/authenticateJWT');
 const CredentialController = require('../controller/CredentialController');

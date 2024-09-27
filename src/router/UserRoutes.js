@@ -1,11 +1,13 @@
-const { Router } = require('express');
+require('dotenv').config();
 
-// This function serves to authenticate the JWT Access Token
-const authenticateJWT = require('../utils/authenticateJWT');
+const { Router } = require('express');
 
 const UserController = require('../controller/UserController');
 const userController = new UserController();
 const routes = Router();
+
+// This function serves to authenticate the JWT Access Token
+const authenticateJWT = require('../utils/authenticateJWT');
 
 routes.post('/user', userController.createUser);
 routes.post('/userfull', userController.createFullRegister);
