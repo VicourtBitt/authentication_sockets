@@ -13,6 +13,12 @@ class UserService {
         })
     }
 
+    async findUserById (id) {
+        return prisma.user.findUnique({
+            where: { id }
+        })
+    }
+
     // Function that gather all the users in the database
     async findAllUsers () {
         return prisma.user.findMany()

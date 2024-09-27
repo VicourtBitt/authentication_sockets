@@ -9,9 +9,10 @@ const routes = Router();
 // This function serves to authenticate the JWT Access Token
 const authenticateJWT = require('../utils/authenticateJWT');
 
-routes.post('/user', userController.createUser);
-routes.post('/userfull', userController.createFullRegister);
-routes.get('/user', userController.findAllUsers);
-routes.delete('/user/:cpf_cnpj', authenticateJWT, userController.deleteUser);
+routes.post(`${process.env.POST_ONLY_USER}`, userController.createUser);
+routes.post(`${process.env.POST_USER}`, userController.createFullRegister);
+routes.get(`${process.env.GET_USER}`, userController.findUserById);
+routes.get(`${process.env.GET_ALL_USERS}`, userController.findAllUsers);
+routes.delete(`${process.env.DELETE_USER}`, authenticateJWT, userController.deleteUser);
 
 module.exports = routes;

@@ -6,10 +6,10 @@ const authenticateJWT = require('../utils/authenticateJWT');
 const { Router } = require('express');
 const routes = Router();
 
-routes.post('/token', tokenController.createTokens);
+routes.post(`${process.env.POST_NEW_LOGIN}`, tokenController.createTokens);
 // need to insert a middleware and a refreshtoken route
-routes.post('/token/access', tokenController.createAccessToken);
-routes.patch('/token', tokenController.updateRefreshTokenInDB);
+routes.post(`${process.env.POST_NEW_ACCESS}`, tokenController.createAccessToken);
+routes.patch(`${process.env.PATCH_NEW_REFRESH}`, tokenController.updateRefreshTokenInDB);
 
 // To make this works, you'll need to insert the cookie on the "client-side", then
 // it'll be visible in the request/response header
