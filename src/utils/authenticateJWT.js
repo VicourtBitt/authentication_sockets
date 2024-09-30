@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 
 const authenticateJWT = (req, res, next) => {
-    const token = req.headers['authorization']
+    const token = req.cookies.access_token
     if (!token) return res.status(401).json({ error: 'Not authorizated' })
 
     jwt.verify(token, process.env.JWT_ACCESS_STRING_KEY, (err, user) => {

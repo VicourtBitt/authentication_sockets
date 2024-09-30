@@ -1,4 +1,5 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 
 // Creating the cors configuration, to give the
 // permissions from others origins
@@ -19,6 +20,7 @@ import tokens from './TokenRoutes.js';
 export default (appDB) => { 
     appDB.use(
         express.json(),
+        cookieParser(),
         cors(corsOptions),
         user,
         credential,

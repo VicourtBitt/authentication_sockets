@@ -27,10 +27,26 @@ class TokenService {
     async createAccessToken (data) {
         const { name, userId } = data
         const userSecret = name.replace(' ', '') + userId
-
+        
         const secretString = process.env.JWT_ACCESS_STRING_KEY
         
         return jwt.sign({ userSecret }, secretString, { expiresIn: '30m' })
+    }
+
+    async verifyRefreshToken (data) {
+        const { token, userId } = data
+        const currentTime = new Date(Date.now())
+        const userToken = await prisma.UserToken.findUnique({
+            where: {
+                userId: userId
+            }
+        })
+
+        if (!userToken || userToken.refreshToken !== token) return false
+        if (userToken.expirationDate < currentTime) {
+            await this.updateRefreshTokenInDB({ name: userToken.userId, userId, token })
+            return false
+        }
     }
 
     // This function will create a new refresh token, it'll be used when

@@ -15,8 +15,15 @@ class TokenController {
     async createTokens (req, res) {
         try {
             const data = req.body
-            const token = await tokenService.createTokens(data)
-            res.status(200).json({ token })
+
+            // It'll only return the access token, and the refresh token
+            // will be stored in the database for future use
+            const accessToken = await tokenService.createTokens(data)
+
+            // The access token will be stored in a cookie, and in the future
+            // it'll be used to authenticate the user by using cookieParser
+            res.cookie('access_token', accessToken, configAccessToken)
+            res.status(200).json({ accessToken })
         } catch (error) {
             // Change the error message in the future
             res.status(400).json({ error: error.message })
@@ -27,9 +34,9 @@ class TokenController {
     async createAccessToken (req, res) {
         try {
             const data = req.body
-            const token = await tokenService.createAccessToken(data)
-            res.cookie('access_token', token, configAccessToken)
-            res.status(200).json({ token })
+            const accessToken = await tokenService.createAccessToken(data)
+            res.cookie('access_token', accessToken, configAccessToken)
+            res.status(200).json({ accessToken })
         } catch (error) {
             // Change the error message in the future
             res.status(400).json({ error: error.message })
