@@ -37,8 +37,6 @@ class TokenController {
             // It'll only return the access token, and the refresh token
             // will be stored in the database for future use
             const { accessToken, refreshToken} = await tokenService.createTokens(data)
-            console.log(accessToken)
-            console.log(refreshToken)
 
             // The access token will be stored in a cookie, and in the future
             // it'll be used to authenticate the user by using cookieParser
@@ -59,7 +57,6 @@ class TokenController {
     async createAccessToken (req, res) {
         try {
             const data = req.body
-            console.log(data)
             const accessToken = await tokenService.createAccessToken(data)
             res.cookie('access_token', accessToken, configAccessToken)
             res.status(200).json({ accessToken })
