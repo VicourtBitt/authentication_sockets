@@ -6,7 +6,7 @@ class CredentialController {
         try {
             const data = req.body
             const credential = await credentialService.createCredential(data)
-            res.status(201).json({ credential })
+            res.status(201).json({ msg: credential.email })
         } catch (error) {
             res.status(400).json({ error: error.message })
         }
