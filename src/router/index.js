@@ -1,4 +1,7 @@
 import express from 'express';
+
+// Importing the cookie-parser to handle the cookies
+// interactions client-to-server (headache)
 import cookieParser from 'cookie-parser';
 
 // Creating the cors configuration, to give the
@@ -7,7 +10,8 @@ import cors from 'cors';
 const corsOptions = {
     origin: '*',
     optionsSuccessStatus: 200,
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PATCH', 'PUT','DELETE']
 }
 
 // Import the routes from each specific model
@@ -19,9 +23,9 @@ import tokens from './TokenRoutes.js';
 // middlewares
 export default (appDB) => { 
     appDB.use(
-        express.json(),
         cookieParser(),
         cors(corsOptions),
+        express.json(),
         user,
         credential,
         tokens
