@@ -1,31 +1,30 @@
 :root {
-    --LIGHT: #FFFFFF;
-    --BLUE-LIGHT: #B7B8E1;
-    --VIOLET-PASTEL: #392B58;
-    --PURPLE-DARK: #2D0320;
-    --ORANGE-PASTEL: #FF600A;
-    --TEST: 1px solid red;
+    --WHITE: #fff;
+    --BLACK: #000;
+    --PRIMARY: #007bff;
+    --SECONDARY: #6c757d;
+    --SUCCESS: #28a745;
+    --DANGER: #dc3545;
+    --WARNING: #ffc107;
+    --INFO: #17a2b8;
+    --LIGHT: #f8f9fa;
+    --DARK: #343a40;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: 0px;
+    border: none;
 }
 
 body {
-    font-family: Verdana, sans-serif;
-    width: 100vw;
-    height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    font-family: 'Verdana', Geneva, sans-serif;
 }
 
 ul {
     list-style: none;
+
     & li {
         list-style-type: none;
     }
@@ -33,4 +32,5 @@ ul {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
